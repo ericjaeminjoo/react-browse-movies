@@ -1,6 +1,7 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import AppRouter from '../router/AppRouter';
+import Header from '../components/Header';
 
 const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
@@ -20,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
 const App = () => {
   return (
     <React.Fragment>
+      <Header />
       <GlobalStyle />
       <AppRouter />
     </React.Fragment>

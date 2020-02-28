@@ -15,11 +15,10 @@ const HomePage = () => {
             key={movie.id}
             movieId={movie.id}
             movieName={movie.original_title}
-            movieImg={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
+            movieImg={`http://image.tmdb.org/t/p/w92/${movie.poster_path}`}
           />
         ))}
       </MovieGrid>
-      <h1>Hello</h1>
     </React.Fragment>
   );
 };
