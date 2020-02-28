@@ -1,10 +1,11 @@
 import React from 'react';
+import HomePage from './HomePage';
 
 const App = () => {
   return (
-    <div>
-      <h1>react-movies</h1>
-    </div>
+    <React.Fragment>
+      <HomePage />
+    </React.Fragment>
   );
 };
 
