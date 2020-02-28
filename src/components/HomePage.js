@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { TMDB_API_KEY, TMDB_API_URL, GET_POPULAR } from '../config';
-import useHomePageFetch from './hooks/useHomePageFetch';
+import useFetchHomePage from './hooks/useFetchHomePage';
 import styled from 'styled-components';
+import { Link } from '@reach/router';
 
 const MovieGrid = styled.div`
   display: flex;
@@ -10,7 +11,9 @@ const MovieGrid = styled.div`
 
 const MovieCard = ({ movieId, movieName, movieImg }) => (
   <StyledMovieCard>
-    <img src={movieImg} />
+    <Link to={`/${movieId}`}>
+      <img src={movieImg} />
+    </Link>
   </StyledMovieCard>
 );
 
@@ -20,7 +23,7 @@ const StyledMovieCard = styled.div`
 `;
 
 const HomePage = () => {
-  const [{ moviesState, loadingMovies, error }] = useHomePageFetch();
+  const [{ moviesState, loadingMovies, error }] = useFetchHomePage();
   const [movieSearch, setMovieSearch] = useState('');
 
   return (
@@ -31,7 +34,7 @@ const HomePage = () => {
             key={movie.id}
             movieId={movie.id}
             movieName={movie.original_title}
-            movieImg={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            movieImg={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
           />
         ))}
       </MovieGrid>
