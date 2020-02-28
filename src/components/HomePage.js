@@ -1,44 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { TMDB_API_KEY, TMDB_API_URL, GET_POPULAR } from '../config';
+import useHomePageFetch from './hooks/useHomePageFetch';
+import styled from 'styled-components';
 
-const TMDB_API_KEY = 'a7207b7ef74147e7dfc4c2b26f5b7798';
-const TMDB_API_URL = 'https://api.themoviedb.org/3/';
-const GET_POPULAR = 'movie/popular?api_key=';
+const MovieGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const MovieCard = ({ movieId, movieName, movieImg }) => (
+  <StyledMovieCard>
+    <img src={movieImg} />
+  </StyledMovieCard>
+);
+
+const StyledMovieCard = styled.div`
+  flex: 1 0 230px;
+  margin: 1.5rem;
+`;
 
 const HomePage = () => {
-  const [movies, setMovies] = useState({ movies: [] });
-  const [loadingMovies, setLoadingMovies] = useState(false);
-  const [error, setError] = useState(false);
-  console.log(movies);
-
-  const fetchData = async (endpoint) => {
-    setLoadingMovies(true);
-    setError(false);
-    console.log(endpoint);
-    try {
-      const result = await (await fetch(endpoint)).json();
-      console.log(result);
-      setMovies((previousState) => ({
-        ...previousState,
-        movies: [...result.results],
-        currentMoviePage: result.page,
-        totalMoviePages: result.total_pages
-      }));
-    } catch (error) {
-      console.log(error);
-      setError(true);
-    } finally {
-      setLoadingMovies(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData(`${TMDB_API_URL}${GET_POPULAR}${TMDB_API_KEY}`);
-  }, []);
+  const [{ moviesState, loadingMovies, error }] = useHomePageFetch();
+  const [movieSearch, setMovieSearch] = useState('');
 
   return (
     <React.Fragment>
-      {/* <NavBar />
-      <MovieGrid /> */}
+      <MovieGrid>
+        {moviesState.movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movieId={movie.id}
+            movieName={movie.original_title}
+            movieImg={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          />
+        ))}
+      </MovieGrid>
       <h1>Hello</h1>
     </React.Fragment>
   );
