@@ -1,5 +1,5 @@
 import React from 'react';
-import useMoviePageFetch from './hooks/useFetchMoviePage';
+import useMoviePageFetch from '../hooks/useFetchMoviePage';
 
 const MoviePage = ({ movieId }) => {
   const [currentMovie, loadingMovie, error] = useMoviePageFetch(movieId);

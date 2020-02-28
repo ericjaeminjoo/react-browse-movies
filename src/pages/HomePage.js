@@ -1,26 +1,7 @@
 import React, { useState } from 'react';
-import { TMDB_API_KEY, TMDB_API_URL, GET_POPULAR } from '../config';
-import useFetchHomePage from './hooks/useFetchHomePage';
-import styled from 'styled-components';
-import { Link } from '@reach/router';
-
-const MovieGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const MovieCard = ({ movieId, movieName, movieImg }) => (
-  <StyledMovieCard>
-    <Link to={`/${movieId}`}>
-      <img src={movieImg} />
-    </Link>
-  </StyledMovieCard>
-);
-
-const StyledMovieCard = styled.div`
-  flex: 1 0 230px;
-  margin: 1.5rem;
-`;
+import useFetchHomePage from '../hooks/useFetchHomePage';
+import MovieGrid from '../components/MovieGrid';
+import MovieCard from '../components/MovieCard';
 
 const HomePage = () => {
   const [{ moviesState, loadingMovies, error }] = useFetchHomePage();

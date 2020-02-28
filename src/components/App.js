@@ -1,9 +1,6 @@
 import React from 'react';
-import HomePage from './HomePage';
 import { createGlobalStyle } from 'styled-components';
-import { Router } from '@reach/router';
-import MoviePage from './MoviePage';
-import NotFound from './NotFound';
+import AppRouter from '../router/AppRouter';
 
 const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
@@ -24,11 +21,7 @@ const App = () => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Router>
-        <HomePage path="/" />
-        <MoviePage path="/:movieId" />
-        <NotFound default />
-      </Router>
+      <AppRouter />
     </React.Fragment>
   );
 };

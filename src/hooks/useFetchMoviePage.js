@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { TMDB_API_KEY, TMDB_API_URL } from '../../config';
+import { useState, useEffect, useCallback } from 'react';
+import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 
 const useFetchMoviePage = (movieId) => {
   const [currentMovie, setCurrentMovie] = useState({});
@@ -24,6 +24,7 @@ const useFetchMoviePage = (movieId) => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
   return [{ currentMovie, loadingMovie, error }];
 };
 

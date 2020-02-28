@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { TMDB_API_KEY, TMDB_API_URL, GET_POPULAR } from '../../config';
+import { useState, useEffect } from 'react';
+import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 
 const useFetchHomePage = () => {
   const [moviesState, setMovies] = useState({ movies: [] });
@@ -18,7 +18,6 @@ const useFetchHomePage = () => {
         totalMoviePages: response.total_pages
       }));
     } catch (error) {
-      console.log(error);
       setError(true);
     } finally {
       setLoadingMovies(false);
