@@ -5,6 +5,7 @@ const useFetchMoviePage = (movieId) => {
   const [currentMovie, setCurrentMovie] = useState({});
   const [loadingMovie, setLoadingMovie] = useState(false);
   const [error, setError] = useState(false);
+  console.log(`current movie id is: ${movieId}`);
 
   const fetchData = useCallback(async () => {
     setLoadingMovie(true);

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 
-const useFetchHomePage = () => {
+const useFetchHomePage = (movieTypeSelection) => {
   const [moviesState, setMovies] = useState({ movies: [] });
   const [loadingMovies, setLoadingMovies] = useState(false);
   const [error, setError] = useState(false);
+  console.log(`current movie type is: ${movieTypeSelection}`);
 
   const fetchData = async (endpoint) => {
     setLoadingMovies(true);
@@ -25,8 +26,10 @@ const useFetchHomePage = () => {
   };
 
   useEffect(() => {
-    fetchData(`${TMDB_API_URL}movie/popular?api_key=${TMDB_API_KEY}`);
-  }, []);
+    fetchData(
+      `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}`
+    );
+  }, [movieTypeSelection]);
 
   return [{ moviesState, loadingMovies, error }];
 };

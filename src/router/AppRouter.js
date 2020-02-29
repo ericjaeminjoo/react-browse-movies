@@ -7,7 +7,7 @@ import NotFound from '../pages/NotFoundPage';
 const AppRouter = () => (
   <Router>
     <Redirect from="/" to="/popular" />
-    <HomePage path="/popular" />
+    <HomePage path="/:movieType" />
     <MoviePage path="/movie/:movieId" />
     <NotFound default />
   </Router>

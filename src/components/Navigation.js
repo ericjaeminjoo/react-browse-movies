@@ -14,11 +14,14 @@ const NavLink = (props) => (
   />
 );
 
-const Navigation = ({ movie }) => (
+const Navigation = () => (
   <nav>
     <ul>
       <li>
         <NavLink to="/popular">Popular</NavLink>
+      </li>
+      <li>
+        <NavLink to="/upcoming">Upcoming</NavLink>
       </li>
     </ul>
   </nav>
