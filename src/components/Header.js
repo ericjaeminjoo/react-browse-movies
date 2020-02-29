@@ -1,19 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from '@reach/router';
-
-const NavLink = (props) => (
-  <Link
-    {...props}
-    getProps={({ isCurrent }) => {
-      return {
-        style: {
-          color: isCurrent ? 'red' : 'blue'
-        }
-      };
-    }}
-  />
-);
+import styled from 'styled-components';
+import Navigation from './Navigation';
+import Search from './Search';
 
 const HeaderStyled = styled.div`
   display: flex;
@@ -23,21 +12,12 @@ const HeaderStyled = styled.div`
 const Header = () => {
   return (
     <HeaderStyled>
-      <Link to="/">
+      <Link to="/popular">
         <a href="#">🍿react-browse-movies</a>
       </Link>
       <div className="right">
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Popular</NavLink>
-            </li>
-          </ul>
-        </nav>
-        <form id="search">
-          <input type="text" name="search" placeholder="Search movies..." />
-          <button type="submit"></button>
-        </form>
+        <Navigation />
+        <Search />
       </div>
     </HeaderStyled>
   );
