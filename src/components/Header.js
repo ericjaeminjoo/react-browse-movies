@@ -7,13 +7,27 @@ import Search from './Search';
 const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+
+  .logo {
+    font-size: 2.1rem;
+    font-weight: 600;
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 0.06rem;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const Header = () => {
   return (
     <HeaderStyled>
       <Link to="/popular">
-        <a href="#">🍿react-browse-movies</a>
+        <div className="logo">🍿react-browse-movies</div>
       </Link>
       <div className="right">
         <Navigation />

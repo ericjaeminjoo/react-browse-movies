@@ -1,5 +1,5 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import AppRouter from '../router/AppRouter';
 import Header from '../components/Header';
 
@@ -15,15 +15,32 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-size: 1.6rem;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    color: #1b262c;
   }
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 1280px;
+  margin: auto;
 `;
 
 const App = () => {
   return (
     <React.Fragment>
-      <Header />
       <GlobalStyle />
-      <AppRouter />
+      <ContentWrapper>
+        <Header />
+        <AppRouter />
+      </ContentWrapper>
     </React.Fragment>
   );
 };
