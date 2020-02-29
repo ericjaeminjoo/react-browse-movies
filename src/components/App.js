@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-size: 1.6rem;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 400;
     color: #1b262c;
   }

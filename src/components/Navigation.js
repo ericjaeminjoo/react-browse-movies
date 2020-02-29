@@ -16,6 +16,7 @@ const NavLink = (props) => (
 );
 
 const NavBar = styled.nav`
+  letter-spacing: 0.03rem;
   .nav-links {
     display: flex;
     justify-content: space-between;

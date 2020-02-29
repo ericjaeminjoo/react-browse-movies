@@ -6,10 +6,15 @@ import styled from 'styled-components';
 
 const MovieHeader = styled.h1`
   text-transform: capitalize;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 2.9rem;
 `;
 
 const MovieDescription = styled.h3`
-  margin: 5px 0;
+  font-weight: 300;
+  font-size: 1.6rem;
+  margin: 9px 0;
 `;
 
 const HomePage = (props) => {
@@ -27,7 +32,7 @@ const HomePage = (props) => {
 
   return (
     <React.Fragment>
-      <MovieHeader>{movieTypeSelection.replace(/_/g, ' ')}</MovieHeader>
+      <MovieHeader>{movieTypeSelection.replace(/_/g, ' ')} Movies</MovieHeader>
       <MovieDescription>
         {movieDescriptions[movieTypeSelection]}
       </MovieDescription>
@@ -37,6 +42,8 @@ const HomePage = (props) => {
             key={movie.id}
             movieId={movie.id}
             movieName={movie.original_title}
+            movieRating={movie.vote_average}
+            movieReleaseDate={movie.release_date}
             movieImg={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
           />
         ))}

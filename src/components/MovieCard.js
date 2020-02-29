@@ -12,10 +12,25 @@ const StyledMovieCard = styled.div`
   }
 `;
 
-const MovieCard = ({ movieId, movieName, movieImg }) => (
+const MovieCard = ({
+  movieId,
+  movieName,
+  movieRating,
+  movieReleaseDate,
+  movieImg
+}) => (
   <StyledMovieCard>
     <Link to={`/movie/${movieId}`}>
       <img src={movieImg} className="movieImg" />
+      <h3>
+        {movieName} ({movieReleaseDate})
+      </h3>
+      <div>
+        <div>
+          <p>{movieRating}</p>
+        </div>
+        <p>{movieReleaseDate}</p>
+      </div>
     </Link>
   </StyledMovieCard>
 );

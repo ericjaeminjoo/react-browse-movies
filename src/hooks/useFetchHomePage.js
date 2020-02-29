@@ -29,6 +29,7 @@ const useFetchHomePage = (movieTypeSelection) => {
     fetchData(
       `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}`
     );
+    window.scrollTo(0, 0);
   }, [movieTypeSelection]);
 
   return [{ moviesState, loadingMovies, error }];

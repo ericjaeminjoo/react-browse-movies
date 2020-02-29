@@ -8,12 +8,11 @@ const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 0;
+  padding: 35px 0;
 
   .logo {
     font-size: 2.1rem;
     font-weight: 600;
-    font-family: 'IBM Plex Sans', sans-serif;
     letter-spacing: 0.06rem;
   }
 
