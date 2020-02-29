@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 
 const useFetchHomePage = (movieTypeSelection) => {

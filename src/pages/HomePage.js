@@ -9,6 +9,7 @@ const MovieHeader = styled.h1`
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
   font-size: 2.9rem;
+  margin-top: 14px;
 `;
 
 const MovieDescription = styled.h3`
@@ -30,6 +31,13 @@ const HomePage = (props) => {
     now_playing: 'Check out what movies are playing now.'
   };
 
+  if (loadingMovies) {
+    return (
+      <div className="wrapper">
+        <h1>Loading Data</h1>
+      </div>
+    );
+  }
   return (
     <React.Fragment>
       <MovieHeader>{movieTypeSelection.replace(/_/g, ' ')} Movies</MovieHeader>
