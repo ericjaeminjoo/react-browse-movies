@@ -5,26 +5,6 @@ const Pages = styled.div`
   justify-content: space-around;
   align-item: center;
   margin: 25px;
-
-  .next-button,
-  .previous-button {
-    border-radius: 5px;
-    color: #d45d79;
-    background-color: #f9eaea;
-    cursor: pointer;
-    font-size: 1.6rem;
-    letter-spacing: 0.05rem;
-    padding: 10.5px 22px;
-    text-decoration: none;
-    border: none;
-    margin: 0 9px;
-    font-weight: 500;
-    transition: color 0.5s;
-
-    &:hover {
-      color: inherit;
-    }
-  }
 `;
 
 export default Pages;

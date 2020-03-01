@@ -7,6 +7,7 @@ import Loading from '../components/Loading';
 import MovieGrid from '../components/MovieGrid';
 import MovieCard from '../components/MovieCard';
 import Pages from '../components/Pages';
+import Button from '../components/Button';
 import styled from 'styled-components';
 
 const MovieHeader = styled.h1`
@@ -76,34 +77,23 @@ const HomePage = (props) => {
       <Pages>
         {currentMoviePage === 1 ? (
           <Link to={`${window.location.pathname}?page${currentMoviePage + 1}`}>
-            <button
-              className="next-button"
-              onClick={() => loadMoreMovies(true)}
-            >
-              Next
-            </button>
+            <Button onClick={() => loadMoreMovies(true)}>Next</Button>
           </Link>
         ) : (
           <React.Fragment>
             <Link
               to={`${window.location.pathname}?page${currentMoviePage - 1}`}
             >
-              <button
-                className="previous-button"
-                onClick={() => loadMoreMovies(false)}
-              >
+              <Button onClick={() => loadMoreMovies(false)}>
                 Page {currentMoviePage - 1}
-              </button>
+              </Button>
             </Link>
             <Link
               to={`${window.location.pathname}?page${currentMoviePage + 1}`}
             >
-              <button
-                className="next-button"
-                onClick={() => loadMoreMovies(true)}
-              >
+              <Button onClick={() => loadMoreMovies(true)}>
                 Page {currentMoviePage + 1}
-              </button>
+              </Button>
             </Link>
           </React.Fragment>
         )}

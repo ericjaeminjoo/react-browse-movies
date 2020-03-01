@@ -1,8 +1,9 @@
-import React from 'react';
-import { TMDB_API_KEY, TMDB_API_URL } from '../config';
+import React, { useState } from 'react';
 import useMoviePageFetch from '../hooks/useFetchMoviePage';
 import ContentWrapper from '../components/ContentWrapper';
 import Loading from '../components/Loading';
+import Button from '../components/Button';
+import YouTube from 'react-youtube';
 import styled from 'styled-components';
 
 const ContentWrapperStyled = styled(ContentWrapper)`
@@ -20,7 +21,7 @@ const MovieImg = styled.div`
     width: auto;
     border-radius: 1px;
     margin: 0 20px;
-    padding: 0 15px;
+    padding: 0 3px;
   }
 `;
 
@@ -40,10 +41,24 @@ const MovieInfo = styled.div`
     display: inline-block;
     font-weight: 300;
   }
+  .youtube-player {
+    margin: 16px 0;
+  }
 `;
 
 const MoviePage = ({ movieId }) => {
   const [{ currentMovie, loadingMovie, error }] = useMoviePageFetch(movieId);
+  const [trailerStatus, setTrailerStatus] = useState(false);
+
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0
+    }
+  };
+
   if (error) {
     return (
       <div>
@@ -85,7 +100,28 @@ const MoviePage = ({ movieId }) => {
           </h3>
           <h3 className="movie-text-header">Overview:</h3>
           <p className="movie-text">{currentMovie.overview}</p>
-          {`https://www.youtube.com/watch?v=${currentMovie.movieTrailerResponse.videos.results[0].key}`}
+          {!trailerStatus ? (
+            <Button
+              className="trailer-button"
+              onClick={() => setTrailerStatus(!trailerStatus)}
+            >
+              View Trailer
+            </Button>
+          ) : (
+            <Button
+              className="trailer-button"
+              onClick={() => setTrailerStatus(!trailerStatus)}
+            >
+              Hide Trailer
+            </Button>
+          )}
+          {trailerStatus && (
+            <YouTube
+              className="youtube-player"
+              videoId={currentMovie.movieTrailerResponse.videos.results[0].key}
+              opts={opts}
+            />
+          )}
         </MovieInfo>
       </Row>
     </ContentWrapperStyled>
