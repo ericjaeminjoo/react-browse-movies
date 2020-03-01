@@ -30,7 +30,7 @@ const Header = () => {
       </Link>
       <div className="right">
         <Navigation />
-        <Search />
+        {/* <Search /> */}
       </div>
     </HeaderStyled>
   );

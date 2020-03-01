@@ -35,12 +35,11 @@ const MovieCard = ({
       <h3 className="movie-name">
         {movieName} ({movieReleaseDate.split('-')[0]})
       </h3>
-
       <StarRatingComponent
         name="rate1"
         starCount={5}
         value={(movieRating / 10) * 5}
-      />
+      />{' '}
     </Link>
   </StyledMovieCard>
 );
