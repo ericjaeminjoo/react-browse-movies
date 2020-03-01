@@ -12,6 +12,9 @@ const ContentWrapperStyled = styled(ContentWrapper)`
 
 const Row = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-item: center;
   margin: 100px 0;
 `;
 
@@ -20,12 +23,18 @@ const MovieImg = styled.div`
     width: 400px !important;
     width: auto;
     border-radius: 1px;
-    margin: 0 20px;
-    padding: 0 3px;
+    box-shadow: 0 0px 6.5px rgba(0, 0, 0, 0.006),
+      0 0px 11.4px rgba(0, 0, 0, 0.009), 0 0px 16.5px rgba(0, 0, 0, 0.01),
+      0 0px 22px rgba(0, 0, 0, 0.011), 0 0px 28.3px rgba(0, 0, 0, 0.012),
+      0 0px 35.5px rgba(0, 0, 0, 0.013), 0 0px 44px rgba(0, 0, 0, 0.014),
+      0 0px 54.5px rgba(0, 0, 0, 0.015), 0 0px 68.9px rgba(0, 0, 0, 0.016),
+      0 0px 98px rgba(0, 0, 0, 0.02);
   }
 `;
 
 const MovieInfo = styled.div`
+  margin: 35px 25px 0 25px;
+  padding: 0 17px;
   .movie-name {
     font-weight: 700;
     font-family: 'Martel', sans-serif;
@@ -43,6 +52,23 @@ const MovieInfo = styled.div`
   }
   .youtube-player {
     margin: 16px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .youtube-player::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+  }
+
+  .youtube-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -51,8 +77,6 @@ const MoviePage = ({ movieId }) => {
   const [trailerStatus, setTrailerStatus] = useState(false);
 
   const opts = {
-    height: '390',
-    width: '640',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0
