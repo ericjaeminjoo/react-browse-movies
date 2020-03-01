@@ -4,6 +4,7 @@ import { Link } from '@reach/router';
 import useFetchHomePage from '../hooks/useFetchHomePage';
 import MovieGrid from '../components/MovieGrid';
 import MovieCard from '../components/MovieCard';
+import Pages from '../components/Pages';
 import styled from 'styled-components';
 
 const MovieHeader = styled.h1`
@@ -49,13 +50,22 @@ const HomePage = (props) => {
     now_playing: 'Check out what movies are playing now.'
   };
 
+  if (error) {
+    return (
+      <div>
+        <h1>Something went wrong!</h1>
+      </div>
+    );
+  }
+
   if (loadingMovies) {
     return (
-      <div className="wrapper">
+      <div>
         <h1>Loading Data</h1>
       </div>
     );
   }
+
   return (
     <React.Fragment>
       <MovieHeader>{movieTypeSelection.replace(/_/g, ' ')} Movies</MovieHeader>
@@ -74,22 +84,41 @@ const HomePage = (props) => {
           />
         ))}
       </MovieGrid>
-      {currentMoviePage === 1 ? (
-        <div>
+      <Pages>
+        {currentMoviePage === 1 ? (
           <Link to={`${window.location.pathname}?page${currentMoviePage + 1}`}>
-            <div onClick={() => loadMoreMovies(true)}>Next Page</div>
+            <button
+              className="next-button"
+              onClick={() => loadMoreMovies(true)}
+            >
+              Next
+            </button>
           </Link>
-        </div>
-      ) : (
-        <div>
-          <Link to={`${window.location.pathname}?page${currentMoviePage - 1}`}>
-            <div onClick={() => loadMoreMovies(false)}>Previous Page</div>
-          </Link>
-          <Link to={`${window.location.pathname}?page${currentMoviePage + 1}`}>
-            <div onClick={() => loadMoreMovies(true)}>Next Page</div>
-          </Link>
-        </div>
-      )}
+        ) : (
+          <React.Fragment>
+            <Link
+              to={`${window.location.pathname}?page${currentMoviePage - 1}`}
+            >
+              <button
+                className="previous-button"
+                onClick={() => loadMoreMovies(false)}
+              >
+                Page {currentMoviePage - 1}
+              </button>
+            </Link>
+            <Link
+              to={`${window.location.pathname}?page${currentMoviePage + 1}`}
+            >
+              <button
+                className="next-button"
+                onClick={() => loadMoreMovies(true)}
+              >
+                Page {currentMoviePage + 1}
+              </button>
+            </Link>
+          </React.Fragment>
+        )}
+      </Pages>
     </React.Fragment>
   );
 };

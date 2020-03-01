@@ -23,6 +23,22 @@ const MovieInfo = styled.div`
 const MoviePage = ({ movieId }) => {
   const [{ currentMovie, loadingMovie, error }] = useMoviePageFetch(movieId);
 
+  if (error) {
+    return (
+      <div>
+        <h1>Something went wrong!</h1>
+      </div>
+    );
+  }
+
+  if (loadingMovie) {
+    return (
+      <div>
+        <h1>Loading Data</h1>
+      </div>
+    );
+  }
+
   return (
     <Row>
       <MovieImg>

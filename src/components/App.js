@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import AppRouter from '../router/AppRouter';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
@@ -41,6 +42,7 @@ const App = () => {
         <Header />
         <AppRouter />
       </ContentWrapper>
+      <Footer />
     </React.Fragment>
   );
 };
