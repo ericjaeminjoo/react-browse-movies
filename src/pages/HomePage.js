@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 import { Link } from '@reach/router';
 import useFetchHomePage from '../hooks/useFetchHomePage';
+import ContentWrapper from '../components/ContentWrapper';
 import MovieGrid from '../components/MovieGrid';
 import MovieCard from '../components/MovieCard';
 import Pages from '../components/Pages';
@@ -67,7 +68,7 @@ const HomePage = (props) => {
   }
 
   return (
-    <React.Fragment>
+    <ContentWrapper>
       <MovieHeader>{movieTypeSelection.replace(/_/g, ' ')} Movies</MovieHeader>
       <MovieDescription>
         {movieDescriptions[movieTypeSelection]}
@@ -119,7 +120,7 @@ const HomePage = (props) => {
           </React.Fragment>
         )}
       </Pages>
-    </React.Fragment>
+    </ContentWrapper>
   );
 };
 

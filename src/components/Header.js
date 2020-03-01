@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 import Navigation from './Navigation';
+import ContentWrapper from '../components/ContentWrapper';
 import Search from './Search';
 
 const HeaderStyled = styled.div`
@@ -24,15 +25,17 @@ const HeaderStyled = styled.div`
 
 const Header = () => {
   return (
-    <HeaderStyled>
-      <Link to="/popular" onClick={() => this.forceUpdate()}>
-        <div className="logo">🍿react-browse-movies</div>
-      </Link>
-      <div className="right">
-        <Navigation />
-        {/* <Search /> */}
-      </div>
-    </HeaderStyled>
+    <ContentWrapper>
+      <HeaderStyled>
+        <Link to="/popular" onClick={() => this.forceUpdate()}>
+          <div className="logo">🍿react-browse-movies</div>
+        </Link>
+        <div className="right">
+          <Navigation />
+          {/* <Search /> */}
+        </div>
+      </HeaderStyled>
+    </ContentWrapper>
   );
 };
 

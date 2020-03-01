@@ -1,6 +1,6 @@
 import React from 'react';
 import useMoviePageFetch from '../hooks/useFetchMoviePage';
-import MovieCard from '../components/MovieCard';
+import ContentWrapper from '../components/ContentWrapper';
 import styled from 'styled-components';
 
 const Row = styled.div`
@@ -40,17 +40,19 @@ const MoviePage = ({ movieId }) => {
   }
 
   return (
-    <Row>
-      <MovieImg>
-        <img
-          src={`http://image.tmdb.org/t/p/original/${currentMovie.poster_path}`}
-          className="moviePageImg"
-        />
-      </MovieImg>
-      <MovieInfo>
-        <h1>{currentMovie.original_title}</h1>
-      </MovieInfo>
-    </Row>
+    <ContentWrapper>
+      <Row>
+        <MovieImg>
+          <img
+            src={`http://image.tmdb.org/t/p/original/${currentMovie.poster_path}`}
+            className="moviePageImg"
+          />
+        </MovieImg>
+        <MovieInfo>
+          <h1>{currentMovie.original_title}</h1>
+        </MovieInfo>
+      </Row>
+    </ContentWrapper>
   );
 };
 

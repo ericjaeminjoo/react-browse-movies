@@ -1,22 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import ContentWrapper from '../components/ContentWrapper';
 
 const FooterContainer = styled.footer`
+  background-color: #1b262c;
+`;
+
+const ContentWrapperStyled = styled(ContentWrapper)`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 40px;
-  padding: 35px 180px;
-  background-color: #1b262c;
+  padding: 40px 30px;
   color: #fff;
 
   .left-side,
   ul {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 400;
   }
   .left-side {
-    max-width: 157px;
+    max-width: 167px;
   }
   ul {
     display: flex;
@@ -29,27 +33,31 @@ const FooterContainer = styled.footer`
 
 const Footer = () => (
   <FooterContainer>
-    <h3 className="left-side">Designed and Developed by Eric Jae-Min Joo 👏</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/JJMin/react-browse-movies"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Repository
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.linkedin.com/in/ericjaeminjoo"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-      </li>
-    </ul>
+    <ContentWrapperStyled>
+      <h3 className="left-side">
+        Designed and Developed by Eric Jae-Min Joo 👏
+      </h3>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/JJMin/react-browse-movies"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Repository
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/ericjaeminjoo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </li>
+      </ul>
+    </ContentWrapperStyled>
   </FooterContainer>
 );
 
