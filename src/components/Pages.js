@@ -13,7 +13,8 @@ const Pages = styled.div`
     background-color: #f9eaea;
     cursor: pointer;
     font-size: 1.6rem;
-    padding: 8px 21px;
+    letter-spacing: 0.05rem;
+    padding: 10.5px 22px;
     text-decoration: none;
     border: none;
     margin: 0 9px;

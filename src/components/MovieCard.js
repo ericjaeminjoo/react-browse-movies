@@ -9,8 +9,9 @@ const StyledMovieCard = styled.div`
 
   .movie-name {
     font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: 0.02rem;
+    font-family: 'Martel', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.01rem;
     color: #21243d;
     margin: 3px 0;
   }
@@ -22,23 +23,20 @@ const StyledMovieCard = styled.div`
   }
 `;
 
-const MovieCard = ({
-  movieId,
-  movieName,
-  movieRating,
-  movieReleaseDate,
-  movieImg
-}) => (
+const MovieCard = (movie) => (
   <StyledMovieCard>
-    <Link to={`/movie/${movieId}`}>
-      <img src={movieImg} className="movieImg" />
+    <Link to={`/movie/${movie.id}`}>
+      <img
+        src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
+        className="movieImg"
+      />
       <h3 className="movie-name">
-        {movieName} ({movieReleaseDate.split('-')[0]})
+        {movie.original_title} ({movie.release_date.split('-')[0]})
       </h3>
       <StarRatingComponent
         name="rate1"
         starCount={5}
-        value={(movieRating / 10) * 5}
+        value={(movie.vote_average / 10) * 5}
       />{' '}
     </Link>
   </StyledMovieCard>

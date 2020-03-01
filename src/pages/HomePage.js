@@ -3,6 +3,7 @@ import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 import { Link } from '@reach/router';
 import useFetchHomePage from '../hooks/useFetchHomePage';
 import ContentWrapper from '../components/ContentWrapper';
+import Loading from '../components/Loading';
 import MovieGrid from '../components/MovieGrid';
 import MovieCard from '../components/MovieCard';
 import Pages from '../components/Pages';
@@ -59,13 +60,7 @@ const HomePage = (props) => {
     );
   }
 
-  if (loadingMovies) {
-    return (
-      <div>
-        <h1>Loading Data</h1>
-      </div>
-    );
-  }
+  if (loadingMovies) return <Loading />;
 
   return (
     <ContentWrapper>
@@ -75,14 +70,7 @@ const HomePage = (props) => {
       </MovieDescription>
       <MovieGrid>
         {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movieId={movie.id}
-            movieName={movie.original_title}
-            movieRating={movie.vote_average}
-            movieReleaseDate={movie.release_date}
-            movieImg={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
-          />
+          <MovieCard key={movie.id} {...movie} />
         ))}
       </MovieGrid>
       <Pages>
