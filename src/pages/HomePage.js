@@ -31,10 +31,16 @@ const HomePage = (props) => {
     fetchData
   ] = useFetchHomePage(movieTypeSelection);
   // const [movieSearch, setMovieSearch] = useState('');
-  const loadMoreMovies = () => {
-    const movieTypeEndpoint = `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}&page=${currentMoviePage +
-      1}`;
-    fetchData(movieTypeEndpoint);
+  const loadMoreMovies = (loadNext) => {
+    loadNext
+      ? fetchData(
+          `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}&page=${currentMoviePage +
+            1}`
+        )
+      : fetchData(
+          `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}&page=${currentMoviePage -
+            1}`
+        );
   };
   const movieDescriptions = {
     popular: 'Check out what the most popular movies are.',
@@ -68,9 +74,22 @@ const HomePage = (props) => {
           />
         ))}
       </MovieGrid>
-      <Link to={`${window.location.pathname}?page${currentMoviePage + 1}`}>
-        <div onClick={loadMoreMovies}>click here</div>
-      </Link>
+      {currentMoviePage === 1 ? (
+        <div>
+          <Link to={`${window.location.pathname}?page${currentMoviePage + 1}`}>
+            <div onClick={() => loadMoreMovies(true)}>Next Page</div>
+          </Link>
+        </div>
+      ) : (
+        <div>
+          <Link to={`${window.location.pathname}?page${currentMoviePage - 1}`}>
+            <div onClick={() => loadMoreMovies(false)}>Previous Page</div>
+          </Link>
+          <Link to={`${window.location.pathname}?page${currentMoviePage + 1}`}>
+            <div onClick={() => loadMoreMovies(true)}>Next Page</div>
+          </Link>
+        </div>
+      )}
     </React.Fragment>
   );
 };

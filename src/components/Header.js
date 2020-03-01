@@ -25,7 +25,7 @@ const HeaderStyled = styled.div`
 const Header = () => {
   return (
     <HeaderStyled>
-      <Link to="/popular">
+      <Link to="/popular" onClick={() => this.forceUpdate()}>
         <div className="logo">🍿react-browse-movies</div>
       </Link>
       <div className="right">

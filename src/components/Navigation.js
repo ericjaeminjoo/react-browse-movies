@@ -35,14 +35,20 @@ const Navigation = () => (
           Popular
         </NavLink>
       </li>
-      <li className="nav-link" onClick={() => this.forceUpdate()}>
-        <NavLink to="/top_rated">Top Rated</NavLink>
+      <li className="nav-link">
+        <NavLink to="/top_rated" onClick={() => this.forceUpdate()}>
+          Top Rated
+        </NavLink>
       </li>
-      <li className="nav-link" onClick={() => this.forceUpdate()}>
-        <NavLink to="/upcoming">Upcoming</NavLink>
+      <li className="nav-link">
+        <NavLink to="/upcoming" onClick={() => this.forceUpdate()}>
+          Upcoming
+        </NavLink>
       </li>
-      <li className="nav-link" onClick={() => this.forceUpdate()}>
-        <NavLink to="/now_playing">Now Playing</NavLink>
+      <li className="nav-link">
+        <NavLink to="/now_playing" onClick={() => this.forceUpdate()}>
+          Now Playing
+        </NavLink>
       </li>
     </ul>
   </NavBar>
