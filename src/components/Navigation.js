@@ -31,15 +31,17 @@ const Navigation = () => (
   <NavBar>
     <ul className="nav-links">
       <li className="nav-link">
-        <NavLink to="/popular">Popular</NavLink>
+        <NavLink to="/popular" onClick={() => this.forceUpdate()}>
+          Popular
+        </NavLink>
       </li>
-      <li className="nav-link">
+      <li className="nav-link" onClick={() => this.forceUpdate()}>
         <NavLink to="/top_rated">Top Rated</NavLink>
       </li>
-      <li className="nav-link">
+      <li className="nav-link" onClick={() => this.forceUpdate()}>
         <NavLink to="/upcoming">Upcoming</NavLink>
       </li>
-      <li className="nav-link">
+      <li className="nav-link" onClick={() => this.forceUpdate()}>
         <NavLink to="/now_playing">Now Playing</NavLink>
       </li>
     </ul>

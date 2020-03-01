@@ -24,7 +24,7 @@ const useFetchMoviePage = (movieId) => {
 
   useEffect(() => {
     fetchData();
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, [fetchData]);
 
   return [{ currentMovie, loadingMovie, error }];

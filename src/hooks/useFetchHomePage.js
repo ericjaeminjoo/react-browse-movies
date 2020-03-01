@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 
-const useFetchHomePage = (movieTypeSelection, currentPage) => {
+const useFetchHomePage = (movieTypeSelection) => {
   const [moviesState, setMovies] = useState({ movies: [] });
   const [loadingMovies, setLoadingMovies] = useState(false);
   const [error, setError] = useState(false);
@@ -9,6 +9,7 @@ const useFetchHomePage = (movieTypeSelection, currentPage) => {
   const fetchData = async (endpoint) => {
     setLoadingMovies(true);
     setError(false);
+
     try {
       const response = await (await fetch(endpoint)).json();
       setMovies((previousState) => ({
@@ -26,12 +27,12 @@ const useFetchHomePage = (movieTypeSelection, currentPage) => {
 
   useEffect(() => {
     fetchData(
-      `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}&page=${currentPage}`
+      `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}`
     );
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, [movieTypeSelection]);
 
-  return [{ moviesState, loadingMovies, error }];
+  return [{ moviesState, loadingMovies, error }, fetchData];
 };
 
 export default useFetchHomePage;

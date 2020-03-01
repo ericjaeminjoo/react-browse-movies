@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { TMDB_API_KEY, TMDB_API_URL } from '../config';
+import { Link } from '@reach/router';
 import useFetchHomePage from '../hooks/useFetchHomePage';
 import MovieGrid from '../components/MovieGrid';
 import MovieCard from '../components/MovieCard';
@@ -20,10 +22,20 @@ const MovieDescription = styled.h3`
 
 const HomePage = (props) => {
   const movieTypeSelection = props.movieType;
-  const [{ moviesState, loadingMovies, error }] = useFetchHomePage(
-    movieTypeSelection
-  );
-  const [movieSearch, setMovieSearch] = useState('');
+  const [
+    {
+      moviesState: { movies, currentMoviePage, totalMoviePages },
+      loadingMovies,
+      error
+    },
+    fetchData
+  ] = useFetchHomePage(movieTypeSelection);
+  // const [movieSearch, setMovieSearch] = useState('');
+  const loadMoreMovies = () => {
+    const movieTypeEndpoint = `${TMDB_API_URL}movie/${movieTypeSelection}?api_key=${TMDB_API_KEY}&page=${currentMoviePage +
+      1}`;
+    fetchData(movieTypeEndpoint);
+  };
   const movieDescriptions = {
     popular: 'Check out what the most popular movies are.',
     top_rated: 'Discover the top rated movies.',
@@ -45,7 +57,7 @@ const HomePage = (props) => {
         {movieDescriptions[movieTypeSelection]}
       </MovieDescription>
       <MovieGrid>
-        {moviesState.movies.map((movie) => (
+        {movies.map((movie) => (
           <MovieCard
             key={movie.id}
             movieId={movie.id}
@@ -56,6 +68,9 @@ const HomePage = (props) => {
           />
         ))}
       </MovieGrid>
+      <Link to={`${window.location.pathname}?page${currentMoviePage + 1}`}>
+        <div onClick={loadMoreMovies}>click here</div>
+      </Link>
     </React.Fragment>
   );
 };
