@@ -36,10 +36,16 @@ const Footer = () => (
   <FooterContainer>
     <ContentWrapperStyled>
       <h3 className="left-side">
-        Designed and Developed by Eric Jae-Min Joo{' '}
-        <span role="img" aria-label="hand clapping">
-          👏
-        </span>
+        <a
+          href="https://www.ericjaeminjoo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Designed and Developed by Eric Jae-Min Joo{' '}
+          <span role="img" aria-label="hand clapping">
+            👏
+          </span>
+        </a>
       </h3>
       <ul>
         <li>
