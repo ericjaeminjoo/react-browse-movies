@@ -3,11 +3,11 @@ import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 import { Link } from '@reach/router';
 import useFetchHomePage from '../hooks/useFetchHomePage';
 import ContentWrapper from '../components/ContentWrapper';
-import Loading from '../components/Loading';
 import MovieGrid from '../components/MovieGrid';
 import MovieCard from '../components/MovieCard';
 import Pages from '../components/Pages';
 import Button from '../components/Button';
+import Loading from '../components/Loading';
 import styled from 'styled-components';
 
 const ContentWrapperStyled = styled(ContentWrapper)`
