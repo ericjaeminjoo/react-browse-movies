@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TMDB_API_KEY, TMDB_API_URL } from '../config';
 import { Link } from '@reach/router';
 import useFetchHomePage from '../hooks/useFetchHomePage';
@@ -32,7 +32,7 @@ const HomePage = (props) => {
   const movieTypeSelection = props.movieType;
   const [
     {
-      moviesState: { movies, currentMoviePage, totalMoviePages },
+      moviesState: { movies, currentMoviePage },
       loadingMovies,
       error
     },

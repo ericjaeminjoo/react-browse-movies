@@ -110,6 +110,7 @@ const MoviePage = ({ movieId }) => {
           <img
             src={`http://image.tmdb.org/t/p/original/${currentMovie.poster_path}`}
             className="moviePageImg"
+            alt="Movie Poster"
           />
         </MovieImg>
         <MovieInfo>

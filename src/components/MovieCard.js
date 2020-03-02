@@ -31,6 +31,7 @@ const MovieCard = (movie) => (
       <img
         src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
         className="movieImg"
+        alt="Movie Poster"
       />
       <h3 className="movie-name">
         {movie.original_title} ({movie.release_date.split('-')[0]})

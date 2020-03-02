@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
+import ContentWrapper from '../components/ContentWrapper';
+
+const ContentWrapperStyled = styled(ContentWrapper)`
+  max-width: 1600px;
+`;
 
 const NavLink = (props) => (
   <Link
@@ -16,7 +21,7 @@ const NavLink = (props) => (
 );
 
 const NavBar = styled.nav`
-  letter-spacing: 0.03rem;
+  letter-spacing: 0.02rem;
   margin: 30px 25px;
   padding: 0 7px;
 
@@ -31,7 +36,7 @@ const NavBar = styled.nav`
     align-items: center;
   }
   .nav-link {
-    padding: 15px 5px;
+    padding: 15px 10px;
     width: 100%;
     text-align: center;
     order: 2;
@@ -39,6 +44,9 @@ const NavBar = styled.nav`
     a {
       display: block;
     }
+  }
+  .popular-link {
+    margin-top: 20px;
   }
   .nav-link.active {
     display: block;
@@ -71,6 +79,9 @@ const NavBar = styled.nav`
   }
 
   @media (min-width: 768px) {
+    .popular-link {
+      margin-top: 0;
+    }
     .logo {
       flex: 1;
     }
@@ -87,38 +98,45 @@ const NavBar = styled.nav`
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <NavBar>
-      <ul className="nav-links">
-        <li className="logo">
-          <Link to="/popular" onClick={() => this.forceUpdate()}>
-            <div className="logo">🍿react-browse-movies</div>
-          </Link>
-        </li>
-        <li className={`${toggle && 'active'} nav-link`}>
-          <NavLink to="/popular" onClick={() => this.forceUpdate()}>
-            Popular
-          </NavLink>
-        </li>
-        <li className={`${toggle && 'active'} nav-link`}>
-          <NavLink to="/top_rated" onClick={() => this.forceUpdate()}>
-            Top Rated
-          </NavLink>
-        </li>
-        <li className={`${toggle && 'active'} nav-link`}>
-          <NavLink to="/upcoming" onClick={() => this.forceUpdate()}>
-            Upcoming
-          </NavLink>
-        </li>
-        <li className={`${toggle && 'active'} nav-link`}>
-          <NavLink to="/now_playing" onClick={() => this.forceUpdate()}>
-            Now Playing
-          </NavLink>
-        </li>
-        <li className="toggle" onClick={() => setToggle(!toggle)}>
-          <span className="burger"></span>
-        </li>
-      </ul>
-    </NavBar>
+    <ContentWrapperStyled>
+      <NavBar>
+        <ul className="nav-links">
+          <li className="logo">
+            <Link to="/popular" onClick={() => this.forceUpdate()}>
+              <div className="logo">
+                <span role="img" aria-label="popcorn">
+                  🍿
+                </span>
+                react-browse-movies
+              </div>
+            </Link>
+          </li>
+          <li className={`${toggle && 'active'} nav-link popular-link`}>
+            <NavLink to="/popular" onClick={() => this.forceUpdate()}>
+              Popular
+            </NavLink>
+          </li>
+          <li className={`${toggle && 'active'} nav-link`}>
+            <NavLink to="/top_rated" onClick={() => this.forceUpdate()}>
+              Top Rated
+            </NavLink>
+          </li>
+          <li className={`${toggle && 'active'} nav-link`}>
+            <NavLink to="/upcoming" onClick={() => this.forceUpdate()}>
+              Upcoming
+            </NavLink>
+          </li>
+          <li className={`${toggle && 'active'} nav-link`}>
+            <NavLink to="/now_playing" onClick={() => this.forceUpdate()}>
+              Now Playing
+            </NavLink>
+          </li>
+          <li className="toggle" onClick={() => setToggle(!toggle)}>
+            <span className="burger"></span>
+          </li>
+        </ul>
+      </NavBar>
+    </ContentWrapperStyled>
   );
 };
 

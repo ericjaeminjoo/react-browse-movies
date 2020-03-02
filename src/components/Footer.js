@@ -13,6 +13,7 @@ const ContentWrapperStyled = styled(ContentWrapper)`
   margin-top: 40px;
   padding: 40px 30px;
   color: #fff;
+  max-width: 1600px;
 
   .left-side,
   ul {
@@ -35,7 +36,10 @@ const Footer = () => (
   <FooterContainer>
     <ContentWrapperStyled>
       <h3 className="left-side">
-        Designed and Developed by Eric Jae-Min Joo 👏
+        Designed and Developed by Eric Jae-Min Joo{' '}
+        <span role="img" aria-label="hand clapping">
+          👏
+        </span>
       </h3>
       <ul>
         <li>
