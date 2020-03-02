@@ -4,7 +4,7 @@
 </p>
 </div>
 
-**react-browse-movies** is an application that showcases movies and movie information in a minamlistic, clean fashion where movie cards are dynamically created based on fetched data via [The Movie Database (TMDb)'s API](https://www.themoviedb.org/).
+**react-browse-movies** is an application that showcases movies and movie information in a minimalist, clean fashion where movie cards are dynamically created based on fetched data via [The Movie Database (TMDb)'s API](https://www.themoviedb.org/).
 
 I built this application to improve my understanding about React, specifically the use of React Hooks, as well as using Declarative Routing using Reach Router.
 
