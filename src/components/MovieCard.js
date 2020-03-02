@@ -5,7 +5,7 @@ import StarRatingComponent from 'react-star-rating-component';
 
 const StyledMovieCard = styled.div`
   flex: 1;
-  margin: 1.5rem;
+  margin: 13px;
 
   .movie-name {
     font-weight: 700;
@@ -20,6 +20,8 @@ const StyledMovieCard = styled.div`
     height: 400px;
     width: auto;
     border-radius: 1px;
+    min-width: 95%;
+    object-fit: cover;
   }
 `;
 

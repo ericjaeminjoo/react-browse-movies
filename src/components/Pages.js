@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Pages = styled.div`
   display: flex;
   justify-content: space-around;
-  align-item: center;
+  align-items: center;
   margin: 25px;
 `;
 

@@ -10,6 +10,10 @@ import Pages from '../components/Pages';
 import Button from '../components/Button';
 import styled from 'styled-components';
 
+const ContentWrapperStyled = styled(ContentWrapper)`
+  padding-left: 27px;
+`;
+
 const MovieHeader = styled.h1`
   text-transform: capitalize;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -64,7 +68,7 @@ const HomePage = (props) => {
   if (loadingMovies) return <Loading />;
 
   return (
-    <ContentWrapper>
+    <ContentWrapperStyled>
       <MovieHeader>{movieTypeSelection.replace(/_/g, ' ')} Movies</MovieHeader>
       <MovieDescription>
         {movieDescriptions[movieTypeSelection]}
@@ -98,7 +102,7 @@ const HomePage = (props) => {
           </React.Fragment>
         )}
       </Pages>
-    </ContentWrapper>
+    </ContentWrapperStyled>
   );
 };
 

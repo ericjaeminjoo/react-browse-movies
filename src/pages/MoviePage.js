@@ -14,7 +14,7 @@ const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-item: center;
+  align-items: center;
   margin: 100px 0;
 `;
 

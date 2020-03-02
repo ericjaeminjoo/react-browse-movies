@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+import Navigation from '../components/Navigation';
 import AppRouter from '../router/AppRouter';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const GlobalStyle = createGlobalStyle`
-  *, *:before, *:after {
+  *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
@@ -33,7 +33,7 @@ const App = () => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <Header />
+      <Navigation />
       <AppRouter />
       <Footer />
     </React.Fragment>
