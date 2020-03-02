@@ -12,7 +12,7 @@ const ContentWrapperStyled = styled(ContentWrapper)`
 
 const Row = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 100px 0;
@@ -47,7 +47,6 @@ const MovieInfo = styled.div`
     font-weight: 500;
   }
   .movie-text {
-    display: inline-block;
     font-weight: 300;
   }
   .youtube-player {
@@ -74,7 +73,10 @@ const MovieInfo = styled.div`
 
 const MoviePage = ({ movieId }) => {
   const [{ currentMovie, loadingMovie, error }] = useMoviePageFetch(movieId);
-  const [trailerStatus, setTrailerStatus] = useState(false);
+  const [trailerState, setTrailerState] = useState({
+    toggle: false,
+    exists: false
+  });
 
   const opts = {
     playerVars: {
@@ -92,6 +94,14 @@ const MoviePage = ({ movieId }) => {
   }
 
   if (loadingMovie) return <Loading />;
+
+  const checkTrailerExists = (input) => {
+    if (input === 0) {
+      setTrailerState({ toggle: !trailerState.toggle, exists: false });
+    } else {
+      setTrailerState({ toggle: !trailerState.toggle, exists: true });
+    }
+  };
 
   return (
     <ContentWrapperStyled>
@@ -124,22 +134,34 @@ const MoviePage = ({ movieId }) => {
           </h3>
           <h3 className="movie-text-header">Overview:</h3>
           <p className="movie-text">{currentMovie.overview}</p>
-          {!trailerStatus ? (
+          {!trailerState.toggle ? (
             <Button
               className="trailer-button"
-              onClick={() => setTrailerStatus(!trailerStatus)}
+              onClick={() => {
+                checkTrailerExists(
+                  currentMovie.movieTrailerResponse.videos.results.length
+                );
+              }}
             >
               View Trailer
             </Button>
           ) : (
             <Button
               className="trailer-button"
-              onClick={() => setTrailerStatus(!trailerStatus)}
+              onClick={() => {
+                checkTrailerExists(
+                  currentMovie.movieTrailerResponse.videos.results.length
+                );
+              }}
             >
               Hide Trailer
             </Button>
           )}
-          {trailerStatus && (
+          {console.log(trailerState)}
+          {!trailerState.exists && trailerState.toggle && (
+            <h3>Cannot find trailer for this movie, sorry!</h3>
+          )}
+          {trailerState.exists && trailerState.toggle && (
             <YouTube
               className="youtube-player"
               videoId={currentMovie.movieTrailerResponse.videos.results[0].key}
